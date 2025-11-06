@@ -1,0 +1,31 @@
+🚀 Performance & Backend Sync Tests
+====================================
+
+Test 1: Frontend Page Load
+  Status: 200
+  Duration: 89ms
+  Result: ✅ PASS
+
+Test 2: Static Assets (CSS)
+  Status: 200
+  Duration: 100ms
+  Result: ✅ PASS
+
+Test 3: Static Assets (JS)
+  Status: 200
+  Duration: 71ms
+  Result: ✅ PASS
+
+Test 4: Check Availability API
+  Status: 200
+  Duration: 266ms
+  Result: ✅ PASS
+
+Test 5: Create Booking API
+  Status: 200
+  Duration: 735ms
+  Result: ✅ PASS
+
+====================================
+📊 All tests completed!
+Check results above for performance metrics

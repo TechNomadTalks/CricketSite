@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Action Soccer and Cricket Arena</title>
+    <meta name="description" content="Get in touch with Action Soccer and Cricket Arena. We're here to help with your booking needs.">
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="cricket-favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="cricket-icon-192.png">
+    <link rel="apple-touch-icon" href="cricket-icon-192.png">
+    <meta name="theme-color" content="#1B5E20">
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="coastal-accounting-logo.png" alt="Coastal Accounting" class="logo-img">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="facilities.html">Facilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">Book Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="text-white">Contact Us</h1>
+            <p class="text-white-50">We're here to help with your booking needs</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle">Get in Touch</span>
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-description">Have questions? We're here to help</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <i class="bi bi-geo-alt-fill contact-icon"></i>
+                        <h4>Location</h4>
+                        <p>Slightly in front of 13 Fairview<br>Near Coastal Accounting<br>Port Shepstone, KwaZulu-Natal</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <i class="bi bi-clock-fill contact-icon"></i>
+                        <h4>Access Information</h4>
+                        <p>Key access required<br>Contact for details<br>Emergency: 10111/10177</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <i class="bi bi-envelope-fill contact-icon"></i>
+                        <h4>Email Us</h4>
+                        <p>luke@l-inc.co.za<br>We respond within 24 hours</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="card-title mb-4">Send Us a Message</h3>
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Your Name *</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Your Email *</label>
+                                        <input type="email" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Subject *</label>
+                                        <select class="form-select" required>
+                                            <option value="">Select subject...</option>
+                                            <option>General Inquiry</option>
+                                            <option>Booking Question</option>
+                                            <option>Facility Information</option>
+                                            <option>Payment Issue</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Message *</label>
+                                        <textarea class="form-control" rows="5" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="bi bi-send me-2"></i>Send Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-0">
+                            <div id="map" style="width: 100%; height: 450px; border-radius: 5px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="section-header text-center mb-4">
+                        <h3 class="section-title">Frequently Asked Questions</h3>
+                    </div>
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    How do I book a cricket pitch?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Simply visit our booking page, select your preferred date, time, and pitch type, then complete the 3-step booking process. You'll receive instant confirmation via email after payment.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    What payment methods do you accept?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We accept payments via EFT (Electronic Funds Transfer). Banking details:<br>
+                                    <strong>Bank:</strong> KZN INLAND<br>
+                                    <strong>Account Holder:</strong> COASTAL ACCOUNTANCY (PTY)LTD TRADING AS COASTAL ACCOUNTING<br>
+                                    <strong>Account Number:</strong> 1648146651<br>
+                                    <strong>Branch Code:</strong> 198765<br>
+                                    <strong>Reference:</strong> Use your booking reference number provided after completing your booking
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    How does one gain access to the Arena?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You will need keys to the storage unit situated in the premises of Coastal Accounting. The keys will have a remote and 2 keys. One key will open the storage unit door to get the stumps and bails and the other key will open the padlock to the arena. The set of keys will also have a remote to turn the alarm on and off at the arena. The alarm must be turned off first and can be done at some distance even before going onto the pathway down to the arena. Other important information, such as gaining access to the Coastal Accounting premises after hours to access the storage unit, will be sent on email once payment has been made.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    What equipment is available and where is it stored?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    All necessary equipment is included with your booking and stored securely in the Coastal Accounting storage unit. This includes stumps, bails, soccer posts, and basic soccer equipment. The arena accommodates up to 16 players (8 per side for cricket games, or 16 players for soccer). Additional specialized equipment can be rented upon request.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    What are the emergency procedures and contact numbers?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <strong>Emergency Numbers:</strong><br>
+                                    Police Emergency: <strong>10111</strong><br>
+                                    Ambulance: <strong>10177</strong><br>
+                                    Fire Emergency: <strong>10111</strong><br><br>
+                                    The arena is located slightly in front of 13 Fairview, near Coastal Accounting in Port Shepstone. Always ensure the alarm is properly set when leaving the premises.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                    Can I cancel or reschedule my booking?
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, you can cancel or reschedule up to 24 hours before your booking time. Contact us via phone or email with your booking reference number.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="footer-title">Action Soccer and Cricket Arena</h5>
+                    <p class="footer-text">Port Shepstone's premier action soccer and cricket arena offering professional facilities and seamless online booking.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/dobusinessbetter" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="https://x.com/DoBusinessBest/status/1772639848089657487" target="_blank" rel="noopener noreferrer" title="X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+                        <a href="https://www.instagram.com/lockhat_inc" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UCtm7tInOPo9XdNdNcxn3Ufw" target="_blank" rel="noopener noreferrer" title="YouTube"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-title">Contact Information</h5>
+                    <ul class="footer-links">
+                        <li>Address: Near 13 Fairview, Port Shepstone, KwaZulu-Natal</li>
+                        <li>Key access via Coastal Accounting premises</li>
+                        <li>Emergency: 10111 (Police), 10177 (Ambulance)</li>
+                        <li>Fire Emergency: 10111</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Action Soccer and Cricket Arena. All rights reserved. | Powered by South African Innovation</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+    
+    <script>
+        // Initialize map
+        // Exact coordinates for Fairview Terrace, Port Shepstone (verified via OpenStreetMap)
+        const map = L.map('map').setView([-30.7499557, 30.4476566], 16);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19
+        }).addTo(map);
+        
+        // Custom green marker icon
+        const greenIcon = L.icon({
+            iconUrl: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAzMiA0OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTYgMEMxMC40OTI5IDAgNiA0LjQ5Mjg2IDYgMTBDNiAyMCAxNiA0MCAxNiA0MEMxNiA0MCAyNiAyMCAyNiAxMEMyNiA0LjQ5Mjg2IDIxLjUwNzEgMCAxNiAwWiIgZmlsbD0iIzFCNUUyMCIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTEiIHI9IjYiIGZpbGw9IiNGRkMxMDciLz48L3N2Zz4=',
+            iconSize: [32, 48],
+            iconAnchor: [16, 48],
+            popupAnchor: [0, -48]
+        });
+        
+        // Add marker at exact Fairview Terrace location
+        const marker = L.marker([-30.7499557, 30.4476566], { icon: greenIcon }).addTo(map);
+        
+        // Add popup
+        marker.bindPopup(`
+            <div style="font-family: 'Poppins', sans-serif; min-width: 200px;">
+                <h6 style="color: #1B5E20; font-weight: bold; margin-bottom: 8px;">
+                    <i class="bi bi-trophy-fill" style="color: #FFC107;"></i> Action Soccer and Cricket Arena
+                </h6>
+                <p style="margin: 4px 0; font-size: 14px;">
+                    <strong>13 Fairview Terrace</strong><br>
+                    Port Shepstone, 4240<br>
+                    South Africa
+                </p>
+                <p style="margin: 8px 0 0 0; font-size: 13px;">
+                    <i class="bi bi-envelope"></i> <a href="mailto:luke@l-inc.co.za">luke@l-inc.co.za</a>
+                </p>
+            </div>
+        `).openPopup();
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Thank you for your message! We will get back to you soon.', 'success');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
