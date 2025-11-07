@@ -188,11 +188,11 @@ function showSuccessMessage(booking) {
                         <div class="alert alert-warning mt-3">
                             <h6><strong>Payment Details - EFT Banking Information</strong></h6>
                             <div class="text-start" style="font-size: 0.95rem;">
-                                <strong>Bank:</strong> FNB (First National Bank)<br>
-                                <strong>Account Name:</strong> Coastal Accounting Cricket Arena<br>
-                                <strong>Account Number:</strong> 62874561234<br>
-                                <strong>Branch Code:</strong> 250655<br>
-                                <strong>Account Type:</strong> Business Cheque<br>
+                                <strong>Bank:</strong> NEDBANK<br>
+                                <strong>Account Name:</strong> COASTAL ACCOUNTANCY (PTY) LTD T/A CRICKET NET ARENA<br>
+                                <strong>Account Number:</strong> 1648146651<br>
+                                <strong>Branch Code:</strong> 198765<br>
+                                <strong>Account Type:</strong> Business Account<br>
                                 <strong>Reference:</strong> ${escapeHtml(booking.id.substring(0, 8).toUpperCase())}<br>
                                 <strong>Amount:</strong> R ${escapeHtml(booking.total_price)}
                             </div>
