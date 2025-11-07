@@ -1,0 +1,3 @@
+[build]
+  command = ""
+  publish = "package (1)/cricket-arena-booking/frontend/"

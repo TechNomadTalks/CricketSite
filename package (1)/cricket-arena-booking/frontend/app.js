@@ -245,7 +245,10 @@ function nextStep(step) {
     }
     
     // Scroll to top of booking section
-    document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const bookingElement = document.getElementById('booking');
+    if (bookingElement) {
+        bookingElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 // Navigate to previous step
@@ -329,8 +332,8 @@ function calculatePrice() {
 // Update booking summary
 function updateBookingSummary() {
     const date = document.getElementById('bookingDate').value;
-    const timeSlotIndex = document.getElementById('timeSlot').value;
-    const timeSlot = CONFIG.TIME_SLOTS[timeSlotIndex];
+    const timeSlotValue = document.getElementById('timeSlot').value;
+    const timeSlot = CONFIG.TIME_SLOTS.find(slot => slot.value === timeSlotValue);
     const duration = document.getElementById('duration').value;
     const pitchName = 'Cricket Net Arena';
     const teamName = document.getElementById('teamName').value;
@@ -346,8 +349,8 @@ function updateBookingSummary() {
     document.getElementById('summaryDate').textContent = new Date(date + 'T00:00:00').toLocaleDateString('en-ZA', {
         weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
     });
-    const selectedSlot = CONFIG.TIME_SLOTS.find(slot => slot.value === timeSlotIndex);
-    document.getElementById('summaryTime').textContent = selectedSlot ? selectedSlot.label : timeSlot;
+    const selectedSlot = CONFIG.TIME_SLOTS.find(slot => slot.value === timeSlotValue);
+    document.getElementById('summaryTime').textContent = selectedSlot ? selectedSlot.label : timeSlotValue;
     document.getElementById('summaryDuration').textContent = `${duration} hour${duration > 1 ? 's' : ''}`;
     document.getElementById('summaryPitch').textContent = pitchName;
     document.getElementById('summaryTeam').textContent = teamName;

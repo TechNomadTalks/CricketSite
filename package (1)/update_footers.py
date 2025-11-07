@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Update footer on all HTML pages with social media links and 24/7 hours"""
+"""Update footer on all HTML pages with a consistent footer."""
 
 import re
 
@@ -8,8 +8,8 @@ footer_template = '''    <!-- Footer -->
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">
-                    <h5 class="footer-title">Cricket Arena</h5>
-                    <p class="footer-text">Port Shepstone's premier cricket net arena offering professional facilities and seamless online booking.</p>
+                    <h5 class="footer-title">Action Soccer and Cricket Arena</h5>
+                    <p class="footer-text">Port Shepstone's premier action soccer and cricket arena offering professional facilities and seamless online booking.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/dobusinessbetter" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="bi bi-facebook"></i></a>
                         <a href="https://x.com/DoBusinessBest/status/1772639848089657487" target="_blank" rel="noopener noreferrer" title="X (Twitter)"><i class="bi bi-twitter-x"></i></a>
@@ -28,18 +28,18 @@ footer_template = '''    <!-- Footer -->
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5 class="footer-title">Operating Hours</h5>
+                    <h5 class="footer-title">Contact Information</h5>
                     <ul class="footer-links">
-                        <li><strong>Open 24/7</strong></li>
-                        <li>Day & Night Bookings Available</li>
-                        <li>Floodlights for Night Games</li>
-                        <li>Book Anytime Online</li>
+                        <li>Address: Near 13 Fairview, Port Shepstone, KwaZulu-Natal</li>
+                        <li>Key access via Coastal Accounting premises</li>
+                        <li>Emergency: 10111 (Police), 10177 (Ambulance)</li>
+                        <li>Fire Emergency: 10111</li>
                     </ul>
                 </div>
             </div>
             <hr class="footer-divider">
             <div class="footer-bottom">
-                <p>&copy; 2025 Cricket Arena. All rights reserved. | Powered by South African Innovation</p>
+                <p>&copy; 2025 Action Soccer and Cricket Arena. All rights reserved. | Powered by South African Innovation</p>
             </div>
         </div>
     </footer>'''
@@ -49,11 +49,12 @@ html_files = [
     'pricing.html',
     'booking.html',
     'about.html',
-    'contact.html'
+    'contact.html',
+    'facilities.html'
 ]
 
 for filename in html_files:
-    filepath = f'/workspace/cricket-arena-booking/frontend/{filename}'
+    filepath = f'package (1)/cricket-arena-booking/frontend/{filename}'
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
