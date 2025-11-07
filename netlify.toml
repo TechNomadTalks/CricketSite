@@ -1,0 +1,6 @@
+[build]
+  # This is the directory that contains the live site files.
+  publish = "package (1)/cricket-arena-booking/frontend/"
+
+# No build command is necessary for this static site.
+# Netlify will simply deploy the files from the publish directory.

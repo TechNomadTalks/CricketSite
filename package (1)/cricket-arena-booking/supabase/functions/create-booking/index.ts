@@ -199,11 +199,11 @@ Deno.serve(async (req) => {
             } else {
                 // Generate QR code for banking details
                 const reference = booking.id.substring(0, 8).toUpperCase();
-                const bankingText = `Bank: FNB
-Account Name: Coastal Accounting Cricket Arena
-Account Number: 62874561234
-Branch Code: 250655
-Account Type: Business Cheque
+                const bankingText = `Bank: NEDBANK
+Account Name: COASTAL ACCOUNTANCY (PTY) LTD T/A CRICKET NET ARENA
+Account Number: 1648146651
+Branch Code: 198765
+Account Type: Business Account
 Reference: ${reference}
 
 Please use the booking reference for payment identification.`;
@@ -251,10 +251,10 @@ Please use the booking reference for payment identification.`;
                     <div style="background: #FFF3CD; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #856404;">
                         <h4 style="margin: 0 0 10px 0; color: #856404;">Payment Details</h4>
                         <p style="margin: 0 0 15px 0; font-size: 14px;">
-                            <strong>Bank:</strong> FNB (First National Bank)<br>
-                            <strong>Account Name:</strong> Coastal Accounting Cricket Arena<br>
-                            <strong>Account Number:</strong> 62874561234<br>
-                            <strong>Branch Code:</strong> 250655<br>
+                            <strong>Bank:</strong> NEDBANK<br>
+                            <strong>Account Name:</strong> COASTAL ACCOUNTANCY (PTY) LTD T/A CRICKET NET ARENA<br>
+                            <strong>Account Number:</strong> 1648146651<br>
+                            <strong>Branch Code:</strong> 198765<br>
                             <strong>Reference:</strong> ${reference}
                         </p>
                         
