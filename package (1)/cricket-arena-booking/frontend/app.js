@@ -245,7 +245,10 @@ function nextStep(step) {
     }
     
     // Scroll to top of booking section
-    document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const bookingElement = document.getElementById('booking');
+    if (bookingElement) {
+        bookingElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 // Navigate to previous step
@@ -329,8 +332,8 @@ function calculatePrice() {
 // Update booking summary
 function updateBookingSummary() {
     const date = document.getElementById('bookingDate').value;
-    const timeSlotIndex = document.getElementById('timeSlot').value;
-    const timeSlot = CONFIG.TIME_SLOTS[timeSlotIndex];
+    const timeSlotValue = document.getElementById('timeSlot').value;
+    const timeSlot = CONFIG.TIME_SLOTS.find(slot => slot.value === timeSlotValue);
     const duration = document.getElementById('duration').value;
     const pitchName = 'Cricket Net Arena';
     const teamName = document.getElementById('teamName').value;
@@ -346,8 +349,8 @@ function updateBookingSummary() {
     document.getElementById('summaryDate').textContent = new Date(date + 'T00:00:00').toLocaleDateString('en-ZA', {
         weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
     });
-    const selectedSlot = CONFIG.TIME_SLOTS.find(slot => slot.value === timeSlotIndex);
-    document.getElementById('summaryTime').textContent = selectedSlot ? selectedSlot.label : timeSlot;
+    const selectedSlot = CONFIG.TIME_SLOTS.find(slot => slot.value === timeSlotValue);
+    document.getElementById('summaryTime').textContent = selectedSlot ? selectedSlot.label : timeSlotValue;
     document.getElementById('summaryDuration').textContent = `${duration} hour${duration > 1 ? 's' : ''}`;
     document.getElementById('summaryPitch').textContent = pitchName;
     document.getElementById('summaryTeam').textContent = teamName;
@@ -495,8 +498,8 @@ function initializeChatbot() {
                     </div>
                     
                     <div class="chatbot-quick-questions">
-                        <button class="quick-question-btn" data-question="hours">
-                            <i class="bi bi-clock"></i> Operating Hours
+                        <button class="quick-question-btn" data-question="access">
+                            <i class="bi bi-key"></i> How to gain access?
                         </button>
                         <button class="quick-question-btn" data-question="location">
                             <i class="bi bi-geo-alt"></i> Location & Directions
@@ -591,13 +594,9 @@ function sendMessage() {
 
 function handleQuickQuestion(questionType) {
     const responses = {
-        hours: `
-            <strong>🕐 Operating Hours:</strong><br><br>
-            Professional facilities available!<br><br>
-            • Book anytime, day or night<br>
-            • Perfect for early morning training or evening matches<br>
-            • Floodlights available for night games<br><br>
-            <em>Ready to book? <a href="booking.html">Click here</a></em>
+        access: `
+            <strong>🔑 How does one gain access to the Arena?</strong><br><br>
+            You will need keys to the storage unit situated in the premises of Coastal Accounting. The keys will have a remote and 2 keys. One key will open the storage unit door to get the stumps and bails and the other key will open the padlock to the arena. The set of keys will also have a remote to turn the alarm on and off at the arena. The alarm must be turned off first and can be done at some distance even before going onto the pathway down to the arena. Other important information, such as gaining access to the Coastal Accounting premises after hours to access the storage unit, will be sent on email once payment has been made.
         `,
         location: `
             <strong>📍 Location:</strong><br><br>

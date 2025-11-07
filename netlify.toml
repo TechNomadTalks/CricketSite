@@ -1,0 +1,12 @@
+[build]
+# this is the folder inside the repo where the real app lives
+base = "package (1)/cricket-arena-booking/frontend"
+
+# Netlify will run this inside that base folder
+command = "npm install && npm run build"
+
+# this is what React/Vite normally outputs
+publish = "dist"
+
+[functions]
+  directory = "package (1)/cricket-arena-booking/supabase/functions"
