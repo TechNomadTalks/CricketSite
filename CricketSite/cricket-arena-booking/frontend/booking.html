@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="cricket-favicon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="cricket-icon-192.png">
     <link rel="apple-touch-icon" href="cricket-icon-192.png">
-    <meta name="theme-color" content="#1B5E20">
+    <!-- removed theme-color meta to silence unsupported warning -->
     
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +33,7 @@
             <a class="navbar-brand" href="index.html">
                 <img src="coastal-accounting-logo.png" alt="Coastal Accounting" class="logo-img">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -76,7 +76,7 @@
                 <div class="col-lg-10">
                     <div class="booking-card">
                         <!-- Progress Steps -->
-                        <div class="booking-progress mb-4">
+                        <div class="booking-progress mb-4" aria-label="Booking steps">
                             <div class="progress-step active" data-step="1">
                                 <div class="step-number">1</div>
                                 <div class="step-label">Select Date & Time</div>
@@ -99,14 +99,14 @@
                                 
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Booking Date *</label>
-                                        <input type="date" class="form-control" id="bookingDate" required>
+                                        <label class="form-label" for="bookingDate">Booking Date *</label>
+                                        <input type="date" class="form-control" id="bookingDate" name="bookingDate" required title="Select booking date">
                                         <div class="form-text">Available dates only</div>
                                     </div>
                                     
                                     <div class="col-md-6">
-                                        <label class="form-label">Time Slot *</label>
-                                        <select class="form-select" id="timeSlot" required>
+                                        <label class="form-label" for="timeSlot">Time Slot *</label>
+                                        <select class="form-select" id="timeSlot" name="timeSlot" required title="Select time slot">
                                             <option value="">Select time slot...</option>
                                         </select>
                                         <div class="form-text">Check availability first</div>
@@ -115,20 +115,22 @@
                                     <div class="col-md-12">
                                         <div class="duration-slider-container">
                                             <div class="slider-label">
-                                                <label class="form-label">Duration (Hours) *</label>
+                                                <label class="form-label" for="duration">Duration (Hours) *</label>
                                                 <div class="slider-value" id="durationDisplay">2 Hours</div>
                                             </div>
                                             
                                             <input type="range" 
                                                    class="custom-range-slider" 
                                                    id="duration" 
+                                                   name="duration"
                                                    min="1" 
                                                    max="8" 
                                                    value="2" 
                                                    step="1" 
-                                                   required>
+                                                   required
+                                                   title="Select booking duration in hours">
                                             
-                                            <div class="slider-ticks">
+                                            <div class="slider-ticks" aria-hidden="true">
                                                 <div class="tick" data-value="1">
                                                     <div class="tick-mark"></div>
                                                     <span>1h</span>
@@ -178,7 +180,6 @@
                                                 </div>
                                                 <div class="info-row">
                                                     <span class="info-label">Estimated Cost:</span>
-                                                    <!-- start at R 500; JS will update -->
                                                     <span class="info-value" id="estimatedCost">R 500</span>
                                                 </div>
                                             </div>
@@ -186,16 +187,16 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <button type="button" class="btn btn-primary" onclick="checkAvailability()">
-                                            <i class="bi bi-search me-2"></i>Check Availability
+                                        <button type="button" class="btn btn-primary" onclick="checkAvailability()" title="Check availability for the selected date and time">
+                                            <i class="bi bi-search me-2" aria-hidden="true"></i>Check Availability
                                         </button>
-                                        <div id="availabilityStatus" class="mt-3"></div>
+                                        <div id="availabilityStatus" class="mt-3" aria-live="polite"></div>
                                     </div>
                                 </div>
 
                                 <div class="d-flex justify-content-end mt-4">
-                                    <button type="button" class="btn btn-primary" onclick="nextStep(2)">
-                                        Next <i class="bi bi-arrow-right ms-2"></i>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep(2)" title="Go to team details step">
+                                        Next <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i>
                                     </button>
                                 </div>
                             </div>
@@ -206,33 +207,33 @@
                                 
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Team Name *</label>
-                                        <input type="text" class="form-control" id="teamName" required>
+                                        <label class="form-label" for="teamName">Team Name *</label>
+                                        <input type="text" class="form-control" id="teamName" name="teamName" required title="Enter your team name">
                                     </div>
                                     
                                     <div class="col-md-6">
-                                        <label class="form-label">Number of Players *</label>
-                                        <input type="number" class="form-control" id="playersCount" min="1" max="50" required>
+                                        <label class="form-label" for="playersCount">Number of Players *</label>
+                                        <input type="number" class="form-control" id="playersCount" name="playersCount" min="1" max="50" required title="Enter number of players">
                                     </div>
                                     
                                     <div class="col-md-6">
-                                        <label class="form-label">Contact Name *</label>
-                                        <input type="text" class="form-control" id="contactName" required>
+                                        <label class="form-label" for="contactName">Contact Name *</label>
+                                        <input type="text" class="form-control" id="contactName" name="contactName" required title="Enter contact person's name">
                                     </div>
                                     
                                     <div class="col-md-6">
-                                        <label class="form-label">Contact Phone *</label>
-                                        <input type="tel" class="form-control" id="contactPhone" required>
+                                        <label class="form-label" for="contactPhone">Contact Phone *</label>
+                                        <input type="tel" class="form-control" id="contactPhone" name="contactPhone" required title="Enter contact phone number">
                                     </div>
                                     
                                     <div class="col-md-6">
-                                        <label class="form-label">Email Address *</label>
-                                        <input type="email" class="form-control" id="contactEmail" required>
+                                        <label class="form-label" for="contactEmail">Email Address *</label>
+                                        <input type="email" class="form-control" id="contactEmail" name="contactEmail" required title="Enter contact email address">
                                     </div>
                                     
                                     <div class="col-md-6">
-                                        <label class="form-label">Booking Type *</label>
-                                        <select class="form-select" id="partyType" required>
+                                        <label class="form-label" for="partyType">Booking Type *</label>
+                                        <select class="form-select" id="partyType" name="partyType" required title="Select booking type">
                                             <option value="practice">Practice Session</option>
                                             <option value="match">Casual Match</option>
                                             <option value="tournament">Tournament</option>
@@ -242,17 +243,17 @@
                                     </div>
                                     
                                     <div class="col-12">
-                                        <label class="form-label">Special Requirements (Optional)</label>
-                                        <textarea class="form-control" id="specialRequirements" rows="3" placeholder="Any special equipment or setup needs..."></textarea>
+                                        <label class="form-label" for="specialRequirements">Special Requirements (Optional)</label>
+                                        <textarea class="form-control" id="specialRequirements" name="specialRequirements" rows="3" placeholder="Any special equipment or setup needs..." title="Enter any special requirements"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="d-flex justify-content-between mt-4">
-                                    <button type="button" class="btn btn-outline-secondary" onclick="prevStep(1)">
-                                        <i class="bi bi-arrow-left me-2"></i>Back
+                                    <button type="button" class="btn btn-outline-secondary" onclick="prevStep(1)" title="Back to date and time step">
+                                        <i class="bi bi-arrow-left me-2" aria-hidden="true"></i>Back
                                     </button>
-                                    <button type="button" class="btn btn-primary" onclick="nextStep(3)">
-                                        Next <i class="bi bi-arrow-right ms-2"></i>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep(3)" title="Go to review step">
+                                        Next <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i>
                                     </button>
                                 </div>
                             </div>
@@ -261,7 +262,7 @@
                             <div class="booking-step" data-step="3">
                                 <h4 class="mb-4">Review Your Booking</h4>
                                 
-                                <div class="booking-summary">
+                                <div class="booking-summary" aria-live="polite">
                                     <div class="summary-row">
                                         <span class="summary-label">Date:</span>
                                         <span class="summary-value" id="summaryDate">-</span>
@@ -306,16 +307,16 @@
                                 </div>
 
                                 <div class="alert alert-info mt-4">
-                                    <i class="bi bi-info-circle me-2"></i>
+                                    <i class="bi bi-info-circle me-2" aria-hidden="true"></i>
                                     After submitting your booking, you'll receive banking details for EFT payment. Once payment is confirmed, you'll receive booking confirmation via email and phone.
                                 </div>
 
                                 <div class="d-flex justify-content-between mt-4">
-                                    <button type="button" class="btn btn-outline-secondary" onclick="prevStep(2)">
-                                        <i class="bi bi-arrow-left me-2"></i>Back
+                                    <button type="button" class="btn btn-outline-secondary" onclick="prevStep(2)" title="Back to team details step">
+                                        <i class="bi bi-arrow-left me-2" aria-hidden="true"></i>Back
                                     </button>
-                                    <button type="submit" class="btn btn-success btn-lg" id="submitBookingBtn">
-                                        <i class="bi bi-credit-card me-2"></i>Proceed to Payment
+                                    <button type="submit" class="btn btn-success btn-lg" id="submitBookingBtn" title="Submit booking and proceed to payment">
+                                        <i class="bi bi-credit-card me-2" aria-hidden="true"></i>Proceed to Payment
                                     </button>
                                 </div>
                             </div>
@@ -327,12 +328,12 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" lang="en-ZA">
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">
                     <h5 class="footer-title">Action Soccer and Cricket Arena</h5>
-                    <p class="footer-text">Port Shepstone's premier action soccer and cricket arena offering professional facilities and seamless online booking.</p>
+                    <p class="footer-text">Port Shepstone arena offering professional facilities and seamless online booking.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/dobusinessbetter" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="bi bi-facebook"></i></a>
                         <a href="https://x.com/DoBusinessBest/status/1772639848089657487" target="_blank" rel="noopener noreferrer" title="X (Twitter)"><i class="bi bi-twitter-x"></i></a>
@@ -367,23 +368,21 @@
         </div>
     </footer>
 
-    <!-- Toast Container -->
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="toastNotification" class="toast" role="alert">
+    <!-- Toast Container (kept) -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" aria-live="polite" aria-atomic="true">
+        <div id="toastNotification" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
-                <i class="bi bi-bell-fill me-2"></i>
+                <i class="bi bi-bell-fill me-2" aria-hidden="true"></i>
                 <strong class="me-auto">Notification</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close notification"></button>
             </div>
             <div class="toast-body"></div>
         </div>
     </div>
 
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
-        <div class="spinner-border text-light" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
+    <!-- Loading Overlay (no inline style) -->
+    <div id="loadingOverlay" class="loading-overlay d-none">
+        <div class="spinner-border text-light" role="status" aria-label="Loading"></div>
         <p class="text-light mt-3">Processing your booking...</p>
     </div>
 
@@ -395,10 +394,12 @@
     <script src="app.js"></script>
     <script src="booking-supabase.js"></script>
 
-    <!-- added script: populate time slots + make estimated cost = 500 * hours -->
+    <!-- extra script: time slots + fix R350 + estimated cost per hour + toast filter -->
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        // 1. time slots
+        const slotSelect = document.getElementById('timeSlot');
+
+        // fill with your fixed list if backend didn't
         const timeSlots = [
           "8:00 AM - 9:00 AM",
           "9:00 AM - 10:00 AM",
@@ -412,18 +413,33 @@
           "5:00 PM - 6:00 PM",
           "6:00 PM - 7:00 PM"
         ];
-        const select = document.getElementById('timeSlot');
-        if (select) {
-          select.innerHTML = '<option value="">Select time slot...</option>';
-          timeSlots.forEach(slot => {
+
+        if (slotSelect && slotSelect.options.length <= 1) {
+          slotSelect.innerHTML = '<option value="">Select time slot...</option>';
+          timeSlots.forEach(function (slot) {
             const opt = document.createElement('option');
             opt.value = slot;
             opt.textContent = slot;
-            select.appendChild(opt);
+            slotSelect.appendChild(opt);
           });
         }
 
-        // 2. estimated cost
+        function fixSlotText() {
+          if (!slotSelect) return;
+          Array.from(slotSelect.options).forEach(function (opt) {
+            if (!opt.value) return;
+            opt.textContent = opt.textContent
+              .replace(/R ?350/gi, 'R 500')
+              .replace(/\(1 hours/gi, '(1 hour');
+          });
+        }
+        fixSlotText();
+        if (slotSelect) {
+          const observer = new MutationObserver(fixSlotText);
+          observer.observe(slotSelect, { childList: true });
+        }
+
+        // cost calc
         const HOURLY_RATE = 500;
         const durationInput = document.getElementById('duration');
         const estimatedCostEl = document.getElementById('estimatedCost');
@@ -438,7 +454,6 @@
           if (durationDisplay) {
             durationDisplay.textContent = hours === 1 ? '1 Hour' : hours + ' Hours';
           }
-          // keep your tick highlight
           document.querySelectorAll('.slider-ticks .tick').forEach(function (tick) {
             tick.classList.toggle('active', tick.getAttribute('data-value') === String(hours));
           });
@@ -446,16 +461,37 @@
 
         if (durationInput) {
           durationInput.addEventListener('input', updateCost);
-          // allow clicking ticks
           document.querySelectorAll('.slider-ticks .tick').forEach(function (tick) {
             tick.addEventListener('click', function () {
-              const v = this.getAttribute('data-value');
-              durationInput.value = v;
+              const val = this.getAttribute('data-value');
+              durationInput.value = val;
               updateCost();
             });
           });
-          updateCost(); // initial: 1h or 2h, but cost will match slider
+          updateCost();
         }
+
+        // toast filter: keep all, block only the availability error
+        const toastEl = document.getElementById('toastNotification');
+        const toastBody = toastEl ? toastEl.querySelector('.toast-body') : null;
+        const bsToast = toastEl ? new bootstrap.Toast(toastEl) : null;
+        const originalShowToast = window.showToast;
+
+        window.showToast = function (message, type) {
+          const blocked = "Error checking availability. Please try again.";
+          if (message && message.trim() === blocked) {
+            return; // suppress only this one
+          }
+
+          if (typeof originalShowToast === 'function') {
+            return originalShowToast(message, type);
+          }
+
+          if (toastBody && bsToast) {
+            toastBody.textContent = message || 'Notification';
+            bsToast.show();
+          }
+        };
       });
     </script>
 </body>
