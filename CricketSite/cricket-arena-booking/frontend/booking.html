@@ -178,7 +178,8 @@
                                                 </div>
                                                 <div class="info-row">
                                                     <span class="info-label">Estimated Cost:</span>
-                                                    <span class="info-value" id="estimatedCost">R 700</span>
+                                                    <!-- start at R 500; JS will update -->
+                                                    <span class="info-value" id="estimatedCost">R 500</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -393,5 +394,69 @@
     <script src="config.js"></script>
     <script src="app.js"></script>
     <script src="booking-supabase.js"></script>
+
+    <!-- added script: populate time slots + make estimated cost = 500 * hours -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // 1. time slots
+        const timeSlots = [
+          "8:00 AM - 9:00 AM",
+          "9:00 AM - 10:00 AM",
+          "10:00 AM - 11:00 AM",
+          "11:00 AM - 12:00 PM",
+          "12:00 PM - 1:00 PM",
+          "1:00 PM - 2:00 PM",
+          "2:00 PM - 3:00 PM",
+          "3:00 PM - 4:00 PM",
+          "4:00 PM - 5:00 PM",
+          "5:00 PM - 6:00 PM",
+          "6:00 PM - 7:00 PM"
+        ];
+        const select = document.getElementById('timeSlot');
+        if (select) {
+          select.innerHTML = '<option value="">Select time slot...</option>';
+          timeSlots.forEach(slot => {
+            const opt = document.createElement('option');
+            opt.value = slot;
+            opt.textContent = slot;
+            select.appendChild(opt);
+          });
+        }
+
+        // 2. estimated cost
+        const HOURLY_RATE = 500;
+        const durationInput = document.getElementById('duration');
+        const estimatedCostEl = document.getElementById('estimatedCost');
+        const durationDisplay = document.getElementById('durationDisplay');
+
+        function updateCost() {
+          const hours = parseInt(durationInput.value, 10) || 1;
+          const cost = hours * HOURLY_RATE;
+          if (estimatedCostEl) {
+            estimatedCostEl.textContent = 'R ' + cost.toLocaleString('en-ZA');
+          }
+          if (durationDisplay) {
+            durationDisplay.textContent = hours === 1 ? '1 Hour' : hours + ' Hours';
+          }
+          // keep your tick highlight
+          document.querySelectorAll('.slider-ticks .tick').forEach(function (tick) {
+            tick.classList.toggle('active', tick.getAttribute('data-value') === String(hours));
+          });
+        }
+
+        if (durationInput) {
+          durationInput.addEventListener('input', updateCost);
+          // allow clicking ticks
+          document.querySelectorAll('.slider-ticks .tick').forEach(function (tick) {
+            tick.addEventListener('click', function () {
+              const v = this.getAttribute('data-value');
+              durationInput.value = v;
+              updateCost();
+            });
+          });
+          updateCost(); // initial: 1h or 2h, but cost will match slider
+        }
+      });
+    </script>
 </body>
 </html>
